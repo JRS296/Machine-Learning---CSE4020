@@ -18,33 +18,43 @@ from sklearn import preprocessing
 
 boston = load_boston()
 # Creating p DataFrames
-boston_df = pd.DataFrame(data= boston.data, columns= boston.feature_names)
+df = pd.DataFrame(data= boston.data, columns= boston.feature_names)
 target_df = pd.DataFrame(data= boston.target, columns= ['prices'])
-boston_df = pd.concat([boston_df, target_df], axis= 1)
-# Variables
-X= boston_df.drop(labels= 'prices', axis= 1)
-Y= boston_df['prices']
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= 0.35, random_state= 80)
+df = pd.concat([df, target_df], axis= 1)
+
+print(df.head())
+print(df.shape)
+print(df.dtypes)
+print(df.info())
+print()
+
+X= df.drop(labels= 'prices', axis= 1)
+Y= df['prices']
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size= 0.4, random_state= 60)
 lr = LinearRegression()
-# Training/Fitting the Model
+
+#Model Training
 lr.fit(X_train, Y_train)
-print("X values for predicating :\n")
+print("X values for predicting :\n")
 print(X_test)
-predicate = lr.predict(X_test)
-print("\npredicted y values are :\n")
-print(predicate)
+predict = lr.predict(X_test)
+print("\nPredicted y values are: ")
+print(predict)
 mi_ma_sca = preprocessing.MinMaxScaler()
 col_sel = ['CRIM', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'B', 'LSTAT']
-X = boston_df.loc[:,col_sel]
-Y = boston_df['prices']
-X = pd.DataFrame(boston_df, columns=col_sel)
+X = df.loc[:,col_sel]
+Y = df['prices']
+X = pd.DataFrame(df, columns=col_sel)
 fig, axs = plt.subplots(ncols=4, nrows=2, figsize=(20, 10))
 index = 0
 axs = axs.flatten()
+
 for i, j in enumerate(col_sel):
- sea.regplot(y=Y, x=X[j], ax=axs[i])
-plt.tight_layout(pad=0.4, w_pad=0.5, h_pad=5.0)
-# Evaluating Model's Performance
-print('Mean Absolute Error:', mean_absolute_error(Y_test, predicate))
-print('Mean Squared Error:', mean_squared_error(Y_test, predicate))
-print('Mean Root Squared Error:', np.sqrt(mean_squared_error(Y_test, predicate)))
+    sea.regplot(color='green',y=Y, x=X[j], ax=axs[i])
+plt.tight_layout(pad=0.4, w_pad=0.45, h_pad=5.0)
+plt.show()
+
+print("Model Performance: ")
+print('Mean Absolute Error:', mean_absolute_error(Y_test, predict))
+print('Root Mean Squared Error:', np.sqrt(mean_squared_error(Y_test, predict)))
+print('Mean Squared Error:', mean_squared_error(Y_test, predict))
