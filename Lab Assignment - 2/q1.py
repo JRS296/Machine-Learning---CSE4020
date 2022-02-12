@@ -44,7 +44,7 @@ cm = confusion_matrix(test_y, y_predict_NB)
 grp_names = ['True Negatives','False Positives','False Negatives','True Positives']
 grp_counts = ["{0:0.0f}".format(value) for value in cm.flatten()]
 
-labels = [f"{v1}\n{v2}" for v1, v2, in zip(grp_names,grp_counts)]
+labels = [f"{v1}\n{v2}" for v1, v2, in zip(grp_names,grp_counts)] 
 labels = np.asarray(labels).reshape(2,2)
 sns.heatmap(cm, annot=labels, fmt='', cmap="BuPu")
 plt.show()
