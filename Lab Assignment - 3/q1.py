@@ -1,6 +1,12 @@
 import pandas as pd
 import numpy as np
 
+#For and gate
+#df = pd.DataFrame([[1,1,1],[-1, 1, -1],[1, -1, -1],[-1, -1, -1]])
+
+#For or gate
+#df = pd.DataFrame([[1,1,1],[-1, 1, 1],[1, -1, 1],[-1, -1, -1]])
+
 df = pd.DataFrame([[-1, -1, -1],[-1, 1, -1],[1, -1, -1],[1, 1, 1]])
 print(df.head(),'\n')
 
