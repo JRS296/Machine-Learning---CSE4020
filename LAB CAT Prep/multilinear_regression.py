@@ -7,7 +7,7 @@ import seaborn as sea
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_absolute_error, classification_report, accuracy_score
 from sklearn.metrics import mean_squared_error
 from sklearn.datasets import load_boston
 from sklearn import preprocessing
@@ -54,3 +54,6 @@ print("Model Performance: ")
 print('Mean Absolute Error:', mean_absolute_error(Y_test, predict))
 print('Root Mean Squared Error:', np.sqrt(mean_squared_error(Y_test, predict)))
 print('Mean Squared Error:', mean_squared_error(Y_test, predict))
+
+print(classification_report(predict, Y_test))
+print("Accuracy for given MLP Classfier Model: ", accuracy_score(predict, Y_test))

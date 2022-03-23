@@ -3,6 +3,7 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn import metrics
+from sklearn.metrics import classification_report, accuracy_score
 import pandas as pd
 
 iris = load_iris()
@@ -31,5 +32,5 @@ y_pred = gnb.predict(X_test)
 # comparing actual response values (y_test) with predicted response values (y_pred)
 print("Gaussian Naive Bayes model accuracy(in %):", metrics.accuracy_score(y_test, y_pred)*100)
 
-print(classification_report(y_predict_NB, test_y, target_names = target_labels))
-print("Accuracy for given MLP Classfier Model: ", accuracy_score(y_predict_NB, test_y))
+print(classification_report(y_pred, y_test))
+print("Accuracy for given MLP Classfier Model: ", accuracy_score(y_pred, y_test)*100)

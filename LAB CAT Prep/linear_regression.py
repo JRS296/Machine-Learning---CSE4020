@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import datasets,linear_model,metrics
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.metrics import mean_squared_error,classification_report,accuracy_score
 import pandas as pd
 
 # Load the Boston dataset
@@ -67,5 +67,5 @@ plt.xlabel('Actual Price(1000$)')
 plt.ylabel('Predicted Price(1000$)')
 plt.show()
 
-print(classification_report(y_predict_NB, test_y, target_names = target_labels))
-print("Accuracy for given MLP Classfier Model: ", accuracy_score(y_predict_NB, test_y))
+print(classification_report(predicted, y_test))
+print("Accuracy for given MLP Classfier Model: ", accuracy_score(predicted, y_test))
