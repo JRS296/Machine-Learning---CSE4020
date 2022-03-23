@@ -55,3 +55,10 @@ while init or ( sum_xy!= 0 and count <100 ):
     print("Epoch: ",count," New weights: ",w_new," New Bias: ",b_new)
     sum_xy = sum(w_new)
     sum_xy -= sum(w)
+
+#linear 
+#multilinear
+#naive bayes
+#decision tree
+#perceptron
+#svm
