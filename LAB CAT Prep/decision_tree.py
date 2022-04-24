@@ -17,7 +17,7 @@ X = pima[feature_cols] # Features
 y = pima.Outcome # Target variable
 
 # Split dataset into training set and test set
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1) # 70% training and 30% test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1) # 70% training and 30% test
 
 clf = DecisionTreeClassifier(criterion="entropy", max_depth=5)
 clf = clf.fit(X_train,y_train)
